@@ -1,14 +1,39 @@
-User: Alice
-Comment: <h1>Big welcome <iframe src="javascript:alert('XSS-5')"></iframe>!</h1><script>alert('XSS-1')</script>
+User: Alice  
+Date: 2023-08-01  
+Comment:
+<h2>Welcome to our product!</h2>
+Thanks for the update — I liked the part about new features.  
+<b>One suggestion:</b> maybe allow exports in PDF next time?
+ 
  
 User: Bob
-Comment: <img src=x onerror=alert('XSS-2')> Hello!
+Date: 2023-08-02
+Comment:
+Hello, I had an issue with the login form. Here’s a screenshot:  
+<img src="x" onerror="alert('XSS from image - Bob')">  
+Also, your form button doesn't submit sometimes on Firefox.
+ 
+User: Carol
+Date: 2023-08-02
+Comment:
+<script>
+  // Trying a simple message...
+  alert("XSS from Carol's script block");
+</script>
+ 
+ 
+User: Dave
+Date: 2023-08-03
+Comment:
+Hover here for help:  
+<div style="background:#eee;padding:5px;" onmouseover="alert('Hover XSS from Dave')">
+  Need help? Move your mouse here.
+</div>
+ 
  
 User: Eve
-Comment: [Click here](javascript:alert('XSS-3')) for a surprise!
- 
-User: Mallory
-Comment: <div onmouseover="alert('XSS-4')">Hover me</div>
- 
-User: Trent
-Comment: <iframe src="javascript:alert('XSS-5')"></iframe>
+Date: 2023-08-03
+Comment:
+Check out this doc:  
+<a href="javascript:alert('XSS link')">User Guide</a>  
+Also see <i>section 3.2</i> for bug reports.
