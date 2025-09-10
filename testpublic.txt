@@ -1,5 +1,5 @@
 User: Alice
-Comment: <h1>Big welcome!</h1><script>alert('XSS-1')</script>
+Comment: <h1>Big welcome <iframe src="javascript:alert('XSS-5')"></iframe>!</h1><script>alert('XSS-1')</script>
  
 User: Bob
 Comment: <img src=x onerror=alert('XSS-2')> Hello!
