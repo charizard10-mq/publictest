@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <h1>Origin A (GitHub): MessageChannel</h1>
+  <h1>Testing SOP Block</h1>
   <script>
-    const channel = new MessageChannel();
-    const port1 = channel.port1;
-    const port2 = channel.port2;
-
-    // Listen on port1 (same origin)
-    port1.onmessage = (e) => console.log("[GitHub] Received:", e.data);
-
-    // Send a test message to itself
-    port1.postMessage("Hello from GitHub!");
-
-    // Expose port2 globally (for demonstration – this is NOT secure!)
-    window.port2FromGitHub = port2; 
+    // Attempt to load a script from AWS origin (UNAUTHORIZED)
+    const script = document.createElement('script');
+    script.src = 'https://localhost.my.gamma.us-west-2.nonprod.connect.aws.a2z.com:8080/harness/some-script.js'; // Replace with actual path
+    script.onload = () => console.log('Script loaded (THIS SHOULD NOT HAPPEN)');
+    script.onerror = (err) => console.error('Script blocked by SOP:', err);
+    document.body.appendChild(script);
   </script>
 </body>
 </html>
