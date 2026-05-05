@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Origin A: MessageChannel Creator</h1>
+  <script>
+    // Create a MessageChannel
+    const channel = new MessageChannel();
+    const port1 = channel.port1;
+    const port2 = channel.port2;
+
+    // Listen for messages on port1 (same origin)
+    port1.onmessage = (event) => {
+      console.log("[Origin A] Received:", event.data);
+    };
+
+    // Send a test message to itself (proof it works)
+    port1.postMessage("Hello from Origin A!");
+
+    // Attempt to "share" port2 with Origin B (will fail due to SOP)
+    console.log("Port2 object:", port2); // For inspection
+  </script>
+</body>
+</html>
