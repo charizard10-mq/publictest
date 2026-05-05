@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <h1>Origin B: Interception Attempt</h1>
-  <iframe id="frameA" src="http://localhost:8000" width="0" height="0" style="display:none;"></iframe>
+  <h1>Origin B (Local): Interception Attempt</h1>
   <script>
-    document.getElementById('frameA').onload = () => {
-      try {
-        // Attempt to access port2 FROM ORIGIN A (WILL FAIL)
-        const originAPort2 = /* HOW WOULD YOU GET THIS? */; // Replace with a way to "steal" port2
-
-        // Example: If Origin A somehow exposed port2 globally (it can't!)
-        // originAPort2.onmessage = (event) => {
-        //   console.log("[Origin B] Intercepted:", event.data);
-        // };
-      } catch (error) {
-        console.error("[Origin B] SOP Block:", error.message);
-      }
-    };
+    // Attempt to access port2 FROM GitHub (WILL FAIL due to SOP)
+    try {
+      const githubPort2 = window.port2FromGitHub; // Defined in Origin A
+      githubPort2.onmessage = (e) => console.log("[Local] Intercepted:", e.data);
+    } catch (error) {
+      console.error("[Local] SOP Block:", error.message);
+    }
   </script>
 </body>
 </html>
